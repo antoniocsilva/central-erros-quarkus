@@ -27,13 +27,13 @@ import java.util.Optional;
 public class CentalErrosLogResource {
 
     @GET
-    public List<LogError> allLogError(){
+    public List<LogError> allLog(){
         return LogError.listAll();
     }
 
     @POST
     @Transactional
-    public void allLogError(LogDTO dto){
+    public void adicionar(LogDTO dto){
         LogError logError = new LogError();
         logError.setLevel(dto.level);
         logError.setDescription(dto.description);
@@ -46,12 +46,12 @@ public class CentalErrosLogResource {
     @PUT
     @Path("{id}")
     @Transactional
-    public void allLogError(@PathParam("id") long id, LogDTO dto){
-        Optional<LogError> loggerErrorOptional = LogError.findByIdOptional(id);
+    public void atualizar(@PathParam("id") long id, LogDTO dto){
+        Optional<LogError> logErrorOptional = LogError.findByIdOptional(id);
 
-        if(loggerErrorOptional.isPresent()) {
+        if(logErrorOptional.isPresent()) {
 
-            LogError logError = loggerErrorOptional.get();
+            LogError logError = logErrorOptional.get();
             logError.setLevel(dto.level);
             logError.setDescription(dto.description);
             logError.setEventLog(dto.eventLog);
@@ -65,14 +65,13 @@ public class CentalErrosLogResource {
 
     }
 
-
     @DELETE
     @Path("{id}")
     @Transactional
-    public void allLogError(@PathParam("id") long id){
-        Optional<LogError> loggerErrorOptional = LogError.findByIdOptional(id);
+    public void deletar(@PathParam("id") long id){
+        Optional<LogError> logErrorOptional = LogError.findByIdOptional(id);
 
-        loggerErrorOptional.ifPresentOrElse(LogError::delete, () -> {
+        logErrorOptional.ifPresentOrElse(LogError::delete, () -> {
             throw new NotFoundException();
         });
 

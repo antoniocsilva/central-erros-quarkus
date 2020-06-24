@@ -1,12 +1,13 @@
-restaurante:
+log:
   - ID: 123
-    NOME: "Novo Restaurante"
-    PROPRIETARIO: "ID do keyclock"
+    LEVEL: "INFO"
+    DESCRIPTION: "Info no Post"
+    EVENTLOG: "Post"
+    ORIGIN: "Predator-Helios"
+    QUANTITY: 10
   - ID: 234
-    NOME: "Novo Restaurante 2"
-    PROPRIETARIO: "ID do keyclock 2"
-
-
-
-
-
+    LEVEL: "ERROR"
+    DESCRIPTION: "Erro no Post2"
+    EVENTLOG: "Post"
+    ORIGIN: "Predator-Helios"
+    QUANTITY: 10

@@ -12,19 +12,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
 @Path("/errors")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class HelloResource {
+public class CentralErrosResource {
 
     @GET
     public Map<Level, Long> allLogErrorLevel(){
 
         Stream<LogError> logErrorStream = LogError.streamAll();
-        Map<Level, Long> result = logErrorStream.collect(Collectors
-                .groupingBy(LogError::getLevel, Collectors.counting()));
 
-        return  result;
+        return logErrorStream.collect(Collectors.groupingBy(LogError::getLevel, Collectors.counting()));
 
     }
 }
